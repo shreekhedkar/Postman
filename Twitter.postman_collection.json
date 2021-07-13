@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "601f7a22-2f67-4871-8ab1-d259fba485a2",
+		"name": "Twitter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "3.UserTimeline",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "tokenSecret",
+							"value": "{{accesstokensecret}}",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{apikeysecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{apikey}}",
+							"type": "string"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sachin_rt",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twitter",
+						"com"
+					],
+					"path": [
+						"1.1",
+						"statuses",
+						"user_timeline.json"
+					],
+					"query": [
+						{
+							"key": "screen_name",
+							"value": "sachin_rt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.Search User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "tokenSecret",
+							"value": "{{accesstokensecret}}",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{apikeysecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{apikey}}",
+							"type": "string"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twitter.com/1.1/users/search.json?q=sachin",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twitter",
+						"com"
+					],
+					"path": [
+						"1.1",
+						"users",
+						"search.json"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "sachin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.Post Tweet",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-length": true,
+					"host": true,
+					"accept": true,
+					"user-agent": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "tokenSecret",
+							"value": "{{accesstokensecret}}",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{apikeysecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{apikey}}",
+							"type": "string"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.twitter.com/1.1/statuses/update.json?status='This is interesting'",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twitter",
+						"com"
+					],
+					"path": [
+						"1.1",
+						"statuses",
+						"update.json"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "'This is interesting'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.Get Timeline",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenSecret",
+							"value": "{{accesstokensecret}}",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{apikeysecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{apikey}}",
+							"type": "string"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twitter",
+						"com"
+					],
+					"path": [
+						"1.1",
+						"statuses",
+						"home_timeline.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "fdc67406-8ca5-4099-b029-9baa8ef55e19",
+		"name": "DummyApi ExternalInput",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Employees",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// var randomNumber = getRandomInt(10000, 11000);",
+							"",
+							"// function getRandomInt(min, max) {",
+							"// return Math.floor(Math.random() * (max - min + 1)) + min;",
+							"// }",
+							"// postman.setEnvironmentVariable(\"name\", \"samplename_\"+randomNumber);",
+							"// postman.setEnvironmentVariable(\"salary\", getRandomInt(10000, 11000));",
+							"// postman.setEnvironmentVariable(\"age\", getRandomInt(18, 600));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randomNumber = getRandomInt(10000, 11000);",
+							"",
+							"function getRandomInt(min, max) {",
+							"return Math.floor(Math.random() * (max - min + 1)) + min;",
+							"}",
+							"postman.setEnvironmentVariable(\"name\", \"samplename_\"+randomNumber);",
+							"postman.setEnvironmentVariable(\"salary\", getRandomInt(10000, 11000));",
+							"postman.setEnvironmentVariable(\"age\", getRandomInt(18, 60));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Has Employee Id\"] = responseBody.has(\"id\");",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"emp_id\", jsonData.data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"{{name}}\",\"salary\":\"{{salary}}\",\"age\":\"{{age}}\"}\t\r\n"
+				},
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

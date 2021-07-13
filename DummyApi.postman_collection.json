@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "e7b919d9-7d4f-4b62-9861-02aa1b31420c",
+		"name": "DummyApi",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Employees",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randomNumber = getRandomInt(10000, 11000);",
+							"",
+							"function getRandomInt(min, max) {",
+							"return Math.floor(Math.random() * (max - min + 1)) + min;",
+							"}",
+							"postman.setEnvironmentVariable(\"name\", \"samplename_\"+randomNumber);",
+							"postman.setEnvironmentVariable(\"salary\", getRandomInt(10000, 11000));",
+							"postman.setEnvironmentVariable(\"age\", getRandomInt(18, 60));",
+							"//pm.globals.set(\"test\", \"myvalue\");",
+							"// name : samplename_10000",
+							"// salary :  10500",
+							"// age: 45"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "shree",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All Employees",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://294b01e9-ae35-43a5-a155-05d5caf651c9.mock.pstmn.io/api/v1/employees",
+							"protocol": "https",
+							"host": [
+								"294b01e9-ae35-43a5-a155-05d5caf651c9",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "shree",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n\"status\": \"worked\",\r\n\"data\": [\r\n\t{\r\n\t\"id\": \"1\",\r\n\t\"employee_name\": \"Test Test\",\r\n\t\"employee_salary\": \"111111\",\r\n\t\"employee_age\": \"23\"\r\n\t}\r\n\t\r\n\t]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Has Employee Id\"] = responseBody.has(\"id\");",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"emp_id\", jsonData.data.id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// var randomNumber = getRandomInt(10000, 11000);",
+							"",
+							"// function getRandomInt(min, max) {",
+							"// return Math.floor(Math.random() * (max - min + 1)) + min;",
+							"// }",
+							"// postman.setEnvironmentVariable(\"name\", \"samplename_\"+randomNumber);",
+							"// postman.setEnvironmentVariable(\"salary\", getRandomInt(10000, 11000));",
+							"// postman.setEnvironmentVariable(\"age\", getRandomInt(18, 60));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"salary\": \"{{salary}}\",\r\n    \"age\": \"{{age}}\"\r\n}"
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Employee-Mock",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abc\",\r\n    \"salary\": \"1223\",\r\n    \"age\": \"22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://294b01e9-ae35-43a5-a155-05d5caf651c9.mock.pstmn.io/api/v1/create",
+							"protocol": "https",
+							"host": [
+								"294b01e9-ae35-43a5-a155-05d5caf651c9",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 03 May 2021 17:02:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private, max-age=31536000"
+						},
+						{
+							"key": "Display",
+							"value": "staticcontent_sol, staticcontent_sol"
+						},
+						{
+							"key": "Expires",
+							"value": "Tue, 03 May 2022 17:02:53 GMT"
+						},
+						{
+							"key": "Host-Header",
+							"value": "c2hhcmVkLmJsdWVob3N0LmNvbQ=="
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": ""
+						},
+						{
+							"key": "Response",
+							"value": "200"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding,Origin"
+						},
+						{
+							"key": "X-Ezoic-Cdn",
+							"value": "Miss"
+						},
+						{
+							"key": "X-Middleton-Display",
+							"value": "staticcontent_sol, staticcontent_sol"
+						},
+						{
+							"key": "X-Middleton-Response",
+							"value": "200"
+						},
+						{
+							"key": "X-Ratelimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-Ratelimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "X-Sol",
+							"value": "pub_site"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "cf-request-id",
+							"value": "09d4c7d9a20000fce198bbe000000001"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?s=1arEGIAoHIwfnWvTU3dSJWsD9EdBH3E%2BTCVC7y3%2FbYgxOyQkEsszpGTO70tvhlGtHDbjK48wYvX2BEnb5aP3QEI4PjPGCJ6MZVuiHFcddQRNFgavTbrkyw0%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"max_age\":604800,\"report_to\":\"cf-nel\"}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "649b0f3c391bfce1-KIX"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3-27=\":443\"; ma=86400, h3-28=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Has Name\"] = responseBody.has(\"name\");",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Does Employee exists\"] = jsonData.data.employee_name === postman.getEnvironmentVariable(\"name\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employee/{{emp_id}}",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"{{emp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"{{name}}\",\"salary\":\"1234\",\"age\":\"{{age}}\"}\t"
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/update/{{emp_id}}",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"{{emp_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Is employee deleted\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"successfully! deleted Records\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/delete/{{emp_id}}",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"{{emp_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

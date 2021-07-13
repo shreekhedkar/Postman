@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "62508517-163a-4e81-9f95-5c9b42740974",
+		"name": "FaceBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PublishToaPage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://graph.facebook.com/100448088085022/feed?access_token=EAAkfvZB6lIwEBAF7ZBSl9IJTFGXxSHNkmBAOhNePD0xdy4NUddKExCyLwPdrzp7cXYRaIxX4CGDZBVfKEhgJXJsRhZAGpRcWFUjmcy1FQwQZBziY5eTyTHJIZB3CqnjJ2RREAGMocR6HGaayyClfs4wrdaxaZAyGL7M7cXv593LFDgVSgZAAT4JPMYjwP2AEMruC0lGmCszjBAZDZD&message=The Day!",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"facebook",
+						"com"
+					],
+					"path": [
+						"100448088085022",
+						"feed"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "EAAkfvZB6lIwEBAF7ZBSl9IJTFGXxSHNkmBAOhNePD0xdy4NUddKExCyLwPdrzp7cXYRaIxX4CGDZBVfKEhgJXJsRhZAGpRcWFUjmcy1FQwQZBziY5eTyTHJIZB3CqnjJ2RREAGMocR6HGaayyClfs4wrdaxaZAyGL7M7cXv593LFDgVSgZAAT4JPMYjwP2AEMruC0lGmCszjBAZDZD"
+						},
+						{
+							"key": "message",
+							"value": "The Day!"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://graph.facebook.com/me?access_token=EAAkfvZB6lIwEBAIJULPZCN8EPZAChXF3ZBJ1i0eZAqPsoxhzwpKI4tIZABDezgJCZCLAkgozHlrHibIK0ZByOPz8tD9Dbxkfk2l9xJLjoOJEN2iV9ZAGAxvoxVgOXFnQcsN5EbydZA3vAr4y3uNGodPru5iGpuGWf97dBD1LVTcOAV9pZC3KbLS5EKLY8G5KelAf5J6oAxsKqseR6jSOE56SDZBoaP8j3TbiO3YIsVejUPZC1qQZDZD",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"facebook",
+						"com"
+					],
+					"path": [
+						"me"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "EAAkfvZB6lIwEBAIJULPZCN8EPZAChXF3ZBJ1i0eZAqPsoxhzwpKI4tIZABDezgJCZCLAkgozHlrHibIK0ZByOPz8tD9Dbxkfk2l9xJLjoOJEN2iV9ZAGAxvoxVgOXFnQcsN5EbydZA3vAr4y3uNGodPru5iGpuGWf97dBD1LVTcOAV9pZC3KbLS5EKLY8G5KelAf5J6oAxsKqseR6jSOE56SDZBoaP8j3TbiO3YIsVejUPZC1qQZDZD"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
